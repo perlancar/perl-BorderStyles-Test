@@ -9,7 +9,7 @@ use strict;
 use warnings;
 use parent 'BorderStyleBase';
 
-our %THEME = (
+our %BORDER = (
     v => 2,
     summary => 'A border style that uses random characters',
     dynamic => 1,
