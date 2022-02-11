@@ -1,18 +1,19 @@
 package BorderStyle::Test::Random;
 
+use strict;
+use warnings;
+
+use Role::Tiny::With;
+with 'BorderStyleRole::Spec::Basic';
+
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
 
-use strict;
-use warnings;
-use parent 'BorderStyleBase';
-
 our %BORDER = (
-    v => 2,
+    v => 3,
     summary => 'A border style that uses random characters',
-    dynamic => 1,
     args => {
         cache => {
             schema => 'bool*',
@@ -24,8 +25,9 @@ our %BORDER = (
 my @chars = map {chr($_)} 32 .. 127;
 
 sub get_border_char {
-    my ($self, $y, $x, $n, $args) = @_;
-    $n = 1 unless defined $n;
+    my ($self, %args) = @_;
+    my $char = $args{char};
+    my $repeat = $args{repeat} // 1;
 
     my $c;
     if ($self->{args}{cache}) {
@@ -38,7 +40,7 @@ sub get_border_char {
         $c = $chars[@chars * rand()];
     }
 
-    $c x $n;
+    $c x $repeat;
 }
 
 1;

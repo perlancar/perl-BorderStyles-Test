@@ -1,5 +1,6 @@
 package BorderStyles::Test;
 
+use strict;
 # AUTHORITY
 # DATE
 # DIST
